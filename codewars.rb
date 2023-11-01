@@ -94,3 +94,56 @@ end
 
 ngay 31-10-23
 
+# Example earthquake --> [[5,3,7],[3,3,1],[4,1,2]] ((5+3+7) * (3+3+1) * (4+1+2)) = 735
+# Với một trận động đất và tuổi của một tòa nhà, hãy viết hàm trả về "An toàn!" nếu tòa nhà đủ vững chắc hoặc "Cần gia cố!" nếu nó rơi.
+def strong_enough( earthquake, age )
+  magnitude(earthquake)< (1000 * (0.99**age)) ? "Safe!" : "Needs Reinforcement!"
+end 
+
+def magnitude(arr)
+  arr.map{|v| v.inject(:+) }.inject(:*)
+end
+
+
+# Beginner Series #3 Sum of Numbers
+# Cho hai số nguyên a và b, có thể dương hoặc âm, tìm tổng của tất cả các số nguyên nằm giữa và bao gồm chúng rồi trả về kết quả đó. Nếu hai số bằng nhau thì trả về a hoặc b.
+# vd:
+# (1, 0) --> 1 (1 + 0 = 1)
+# (1, 2) --> 3 (1 + 2 = 3)
+# (0, 1) --> 1 (0 + 1 = 1)
+# (1, 1) --> 1 (1 since both are same)
+
+def get_sum(a,b)
+  return a < b ? (a..b).reduce(:+) : (b..a).reduce(:+)
+end
+
+
+
+
+# mumbling
+# Các ví dụ dưới đây hướng dẫn bạn cách viết hàm accum:
+# accum("abcd") -> "A-Bb-Ccc-Dddd"
+# accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+# Tham số của accum là một chuỗi chỉ bao gồm các chữ cái từ a..z và A..Z.
+
+def accum(s)
+  s.chars.each_with_index.map{|c,i| c.upcase+c.downcase*i}.join('-')
+end
+
+
+
+# Get the Middle Character
+# Công việc của bạn là trả về ký tự ở giữa của từ. Nếu độ dài của từ là số lẻ, hãy trả về ký tự ở giữa. Nếu độ dài của từ là số chẵn thì trả về 2 ký tự ở giữa.
+# vd: Kata.getMiddle("test") should return "es"
+# Kata.getMiddle("testing") should return "t"
+# Kata.getMiddle("middle") should return "dd"
+
+def get_middle(s)
+  s[(s.size-1)/2..s.size/2]
+end
+
+
+# Hoàn thành hàm chấp nhận tham số chuỗi và đảo ngược từng từ trong chuỗi. Tất cả các khoảng trắng trong chuỗi phải được giữ lại.
+# vd:
+# "This is an example!" ==> "sihT si na !elpmaxe"
+# "double  spaces"      ==> "elbuod  secaps"
