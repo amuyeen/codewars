@@ -143,7 +143,81 @@ def get_middle(s)
 end
 
 
+# Reverse words
 # Hoàn thành hàm chấp nhận tham số chuỗi và đảo ngược từng từ trong chuỗi. Tất cả các khoảng trắng trong chuỗi phải được giữ lại.
 # vd:
 # "This is an example!" ==> "sihT si na !elpmaxe"
 # "double  spaces"      ==> "elbuod  secaps"
+
+def reverse_words(str)
+  str.gsub(/\S+/, &:reverse)
+end
+
+
+# Unpacking Arguments
+# Bạn phải tạo một hàm, spread, hàm này nhận vào một hàm và một danh sách các đối số sẽ được áp dụng cho hàm đó. Bạn phải làm cho hàm này trả về kết quả của việc gọi hàm/lambda đã cho với các đối số đã cho.
+
+def spread(func, args)
+  func.call(*args)
+end
+
+
+
+ # All unique
+ # Viết chương trình kiểm tra xem một chuỗi có chứa các ký tự duy nhất hay không. Trả về true nếu có và sai nếu ngược lại.
+ # Chuỗi có thể chứa bất kỳ ký tự nào trong số 128 ký tự ASCII. Các ký tự phân biệt chữ hoa chữ thường, ví dụ: 'a' và 'A' được coi là các ký tự khác nhau.
+
+def unique_chars?(str)
+  str.chars.uniq! ? false : true
+end
+
+
+# Viết hàm SplitSentence sẽ tạo danh sách các chuỗi từ một chuỗi
+
+module SentenceToWords where
+splitSentence :: [Char] -> [[Char]]
+splitSentence  = words
+
+
+
+# Cho một dãy số, kiểm tra xem có số nào là mã ký tự cho các nguyên âm viết thường không (a, e, i, o, u).
+# Nếu có, hãy thay đổi giá trị mảng thành một chuỗi nguyên âm đó.
+# Trả về mảng kết quả.
+
+def is_vow(a)
+  a.map{ |l| "aeiou".include?(l.chr) ? l.chr : l }
+end
+
+
+
+# Cho một dãy số nguyên, hãy tìm số nguyên xuất hiện với số lần lẻ.
+# Sẽ luôn chỉ có một số nguyên xuất hiện với số lần lẻ.
+# Ví dụ
+# [7] sẽ trả về 7, vì nó xảy ra 1 lần (là số lẻ).
+# [0] sẽ trả về 0, vì nó xảy ra 1 lần (là số lẻ).
+# [1,1,2] sẽ trả về 2, vì nó xảy ra 1 lần (là số lẻ).
+# [0,1,0,1,0] sẽ trả về 0, vì nó xảy ra 3 lần (là số lẻ).
+# [1,2,2,3,3,3,4,3,3,3,2,2,1] sẽ trả về 4, vì nó xuất hiện 1 lần
+
+
+def find_it(seq)
+  seq.each do |value|
+    return value if seq.count(value).odd?
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
